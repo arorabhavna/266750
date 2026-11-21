@@ -1,0 +1,57 @@
+[
+  {
+    "id": "jaipur-history",
+    "name": "Jaipur",
+    "state": "Rajasthan",
+    "category": "history",
+    "bestMonths": "October to March",
+    "weatherRangeF": "54 to 82",
+    "highlights": ["Amber Fort", "City Palace", "Jantar Mantar"],
+    "stayAreas": ["MI Road", "C-Scheme"],
+    "samplePlan": "Fort + palace day, old city market walk, heritage dinner."
+  },
+  {
+    "id": "goa-beach",
+    "name": "Goa",
+    "state": "Goa",
+    "category": "beach",
+    "bestMonths": "November to February",
+    "weatherRangeF": "72 to 89",
+    "highlights": ["Candolim Beach", "Aguada Fort", "Sunset cruise"],
+    "stayAreas": ["Candolim", "Baga", "Colva"],
+    "samplePlan": "Morning beach, water activity block, sunset + cafe crawl."
+  },
+  {
+    "id": "manali-mountain",
+    "name": "Manali",
+    "state": "Himachal Pradesh",
+    "category": "mountain",
+    "bestMonths": "April to June, October to February",
+    "weatherRangeF": "34 to 68",
+    "highlights": ["Solang Valley", "Atal Tunnel", "Old Manali"],
+    "stayAreas": ["Mall Road", "Old Manali"],
+    "samplePlan": "Scenic drive day, mountain activity day, local market evening."
+  },
+  {
+    "id": "bengaluru-city",
+    "name": "Bengaluru",
+    "state": "Karnataka",
+    "category": "city",
+    "bestMonths": "Year-round",
+    "weatherRangeF": "61 to 86",
+    "highlights": ["Cubbon Park", "Indiranagar food trail", "Nandi Hills sunrise"],
+    "stayAreas": ["Indiranagar", "MG Road", "Koramangala"],
+    "samplePlan": "City brunch + museum block, evening brewery or music circuit."
+  },
+  {
+    "id": "munnar-nature",
+    "name": "Munnar",
+    "state": "Kerala",
+    "category": "nature",
+    "bestMonths": "September to March",
+    "weatherRangeF": "52 to 74",
+    "highlights": ["Tea gardens", "Eravikulam Park", "Top Station viewpoints"],
+    "stayAreas": ["Munnar Town", "Chinnakanal"],
+    "samplePlan": "Tea estate morning, nature trail afternoon, viewpoint sunset."
+  }
+]

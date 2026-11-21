@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTG Group Planner - Profile</title>
+  <link rel="stylesheet" href="mtg-style.css">
+</head>
+<body data-page="profile">
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="mtg-logo.png" alt="MTG logo">
+        <div class="brand-sub">Group Trip Planner</div>
+      </div>
+      <nav class="nav">
+        <a class="nav-link" data-page="profile" href="mtg-profile.html">👤 Profile</a>
+        <a class="nav-link" data-page="groups" href="groups.html">👥 Groups</a>
+        <a class="nav-link" data-page="upcoming" href="upcoming.html">✈️ Upcoming</a>
+        <a class="nav-link" data-page="trips" href="trips.html">🧳 Trips</a>
+      </nav>
+      <div class="row">
+        <a class="btn" href="trips.html#newTripSection">✨ Create Trip</a>
+        <a class="btn btn-secondary" href="groups.html">🔎 Join Group</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-current" id="topCurrentSection">👤 Profile</div>
+        <div class="row">
+          <div class="account" id="accountNav" role="button" tabindex="0" aria-label="Go to profile">
+            <div class="user-icon">👤</div>
+            <div><strong>george p burdell</strong></div>
+          </div>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </header>
+
+      <article class="section">
+        <div class="section-header"><h2>👤 Profile Availability</h2></div>
+        <div class="row">
+          <label class="small muted" for="availabilityMode">Mark as:</label>
+          <select id="availabilityMode">
+            <option value="free">Free day</option>
+            <option value="busy">Busy day</option>
+          </select>
+        </div>
+        <div class="calendar" id="calendar"></div>
+        <div class="small muted" id="availabilitySummary" style="margin-top:8px;"></div>
+      </article>
+
+      <article class="section">
+        <div class="section-header"><h2>🎯 My Preferences</h2></div>
+        <div class="row">
+          <label class="small muted" for="preferenceBudget">Budget:</label>
+          <select id="preferenceBudget">
+            <option value="Budget">Budget</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Premium">Premium</option>
+          </select>
+        </div>
+        <div class="small muted" style="margin:10px 0 8px;">Experience type:</div>
+        <div class="prefs-grid" id="experiencePreferences">
+          <label class="pref-pill"><input type="checkbox" value="City"> City</label>
+          <label class="pref-pill"><input type="checkbox" value="Nature"> Nature</label>
+          <label class="pref-pill"><input type="checkbox" value="Historical"> Historical</label>
+          <label class="pref-pill"><input type="checkbox" value="Unique"> Unique</label>
+          <label class="pref-pill"><input type="checkbox" value="Adventure"> Adventure</label>
+          <label class="pref-pill"><input type="checkbox" value="Food"> Food</label>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <label class="small muted" for="preferencePace">Trip pace:</label>
+          <select id="preferencePace">
+            <option value="Relaxed">Relaxed</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Fast">Fast</option>
+          </select>
+          <label class="small muted" for="preferenceStay">Stay:</label>
+          <select id="preferenceStay">
+            <option value="Hotel">Hotel</option>
+            <option value="Resort">Resort</option>
+            <option value="Homestay">Homestay</option>
+            <option value="Any">Any</option>
+          </select>
+        </div>
+      </article>
+
+      <article class="section">
+        <div class="section-header"><h2>📇 Contact Details</h2></div>
+        <div class="row">
+          <input id="profileEmailInput" type="email" placeholder="Email">
+          <input id="profilePhoneInput" type="tel" placeholder="Phone">
+        </div>
+        <div class="row" style="margin-top:8px;">
+          <input id="emergencyNameInput" type="text" placeholder="Emergency contact name">
+          <input id="emergencyPhoneInput" type="tel" placeholder="Emergency contact phone">
+        </div>
+      </article>
+    </main>
+  </div>
+  <script src="mtg-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTG Group Planner - Upcoming</title>
+  <link rel="stylesheet" href="mtg-style.css">
+</head>
+<body data-page="upcoming">
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="mtg-logo.png" alt="MTG logo">
+        <div class="brand-sub">Group Trip Planner</div>
+      </div>
+      <nav class="nav">
+        <a class="nav-link" data-page="profile" href="mtg-profile.html">👤 Profile</a>
+        <a class="nav-link" data-page="groups" href="groups.html">👥 Groups</a>
+        <a class="nav-link" data-page="upcoming" href="upcoming.html">✈️ Upcoming</a>
+        <a class="nav-link" data-page="trips" href="trips.html">🧳 Trips</a>
+      </nav>
+      <div class="row">
+        <a class="btn" href="trips.html#newTripSection">✨ Create Trip</a>
+        <a class="btn btn-secondary" href="groups.html">🔎 Join Group</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-current" id="topCurrentSection">✈️ Upcoming</div>
+        <div class="row">
+          <div class="account" id="accountNav" role="button" tabindex="0" aria-label="Go to profile">
+            <div class="user-icon">👤</div>
+            <div><strong>george p burdell</strong></div>
+          </div>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </header>
+
+      <article class="section">
+        <div class="section-header"><h2>✈️ Upcoming Trips</h2></div>
+        <div id="upcomingTrips"></div>
+      </article>
+
+      <article class="section">
+        <div class="section-header"><h2>🗳️ Active Polls</h2></div>
+        <div class="small muted" style="margin-bottom:8px;">Destination, hotel, activity, and other group/trip polls.</div>
+        <div id="upcomingPolls"></div>
+      </article>
+    </main>
+  </div>
+  <script src="mtg-app.js"></script>
+</body>
+</html>

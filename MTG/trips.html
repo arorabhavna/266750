@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTG Group Planner - Trips</title>
+  <link rel="stylesheet" href="mtg-style.css">
+</head>
+<body data-page="trips">
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="mtg-logo.png" alt="MTG logo">
+        <div class="brand-sub">Group Trip Planner</div>
+      </div>
+      <nav class="nav">
+        <a class="nav-link" data-page="profile" href="mtg-profile.html">👤 Profile</a>
+        <a class="nav-link" data-page="groups" href="groups.html">👥 Groups</a>
+        <a class="nav-link" data-page="upcoming" href="upcoming.html">✈️ Upcoming</a>
+        <a class="nav-link" data-page="trips" href="trips.html">🧳 Trips</a>
+      </nav>
+      <div class="row">
+        <a class="btn" href="trips.html#newTripSection">✨ Create Trip</a>
+        <a class="btn btn-secondary" href="groups.html">🔎 Join Group</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="top-current" id="topCurrentSection">🧳 Trips</div>
+        <div class="row">
+          <div class="account" id="accountNav" role="button" tabindex="0" aria-label="Go to profile">
+            <div class="user-icon">👤</div>
+            <div><strong>george p burdell</strong></div>
+          </div>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        </div>
+      </header>
+
+      <article class="section" id="newTripSection">
+        <div class="section-header row" style="justify-content:space-between; align-items:center;">
+          <h2 style="margin:0;">Trip Setup</h2>
+          <button type="button" class="btn btn-secondary" id="closeTripSetupBtn">Close</button>
+        </div>
+        <div class="row">
+          <input id="tripNameInput" type="text" placeholder="Trip name">
+          <input id="tripDestinationInput" type="text" placeholder="Destination">
+        </div>
+        <div class="row" style="margin-top:8px;">
+          <input id="tripStartInput" type="date">
+          <input id="tripEndInput" type="date">
+          <input id="tripCommunityInput" type="text" list="tripCommunityList" placeholder="Who is coming? (group name or ID)">
+          <datalist id="tripCommunityList"></datalist>
+          <button class="btn" id="addTripBtn">🚀 Add Trip</button>
+        </div>
+        <div class="builder-card" style="margin-top:10px;">
+          <div><strong>Travel dates</strong></div>
+          <div id="tripDateSummary" class="small muted" style="margin-top:4px;">Pick start and end dates</div>
+          <div class="row" style="margin-top:8px;" id="durationPresets">
+            <button type="button" class="duration-chip" data-days="3" data-label="Weekend">3 days</button>
+            <button type="button" class="duration-chip" data-days="5" data-label="5 days">5 days</button>
+            <button type="button" class="duration-chip" data-days="7" data-label="1 week">1 week</button>
+            <button type="button" class="duration-chip" data-days="10" data-label="10 days">10 days</button>
+            <button type="button" class="duration-chip" data-days="14" data-label="2 weeks">2 weeks</button>
+          </div>
+          <div class="row" style="margin-top:8px;">
+            <input id="tripStayInput" type="text" placeholder="Where are you staying? (hotel, address or area)">
+          </div>
+          <div class="small muted" style="margin-top:4px;">Each day will start and end near it.</div>
+          <label class="pref-pill" style="margin-top:8px;">
+            <input id="tripFixedPlansInput" type="checkbox">
+            📌 I have fixed plans (flight, wedding, hotel…)
+          </label>
+        </div>
+
+        <details class="builder-card compact-details" style="margin-top:10px;">
+          <summary>Season-based suggestions (optional)</summary>
+          <div id="tripSeasonLabel"><strong>Season</strong></div>
+          <div id="tripSeasonWindow" class="small muted" style="margin-top:4px;"></div>
+          <div id="tripDemandLabel" class="small muted" style="margin-top:4px;"></div>
+          <div class="small muted" style="margin-top:8px;"><strong>Expected Weather</strong></div>
+          <div id="tripWeather" class="small muted"></div>
+          <div class="small muted" style="margin-top:8px;"><strong>Suggested vibes for this season</strong></div>
+          <div id="tripVibes" class="small muted"></div>
+          <div class="small muted" style="margin-top:8px;">These are suggestions based on season. You can refine in planning.</div>
+        </details>
+
+        <div class="row" style="margin-top:10px; justify-content: flex-end;">
+          <button type="button" class="btn" id="continueToWorkspaceBtn">Continue →</button>
+        </div>
+        <div class="small muted" style="margin-top:8px;">Click any trip to open planning workspace.</div>
+        <div id="yourTrips" style="margin-top:8px;"></div>
+      </article>
+
+      <article class="section clean-workspace" id="planningWorkspaceSection">
+        <div class="section-header row" style="justify-content:space-between; align-items:center;">
+          <h2 style="margin:0;">Day Itinerary Planner</h2>
+          <button type="button" class="btn btn-secondary" id="openTripSetupBtn">+ New Trip</button>
+        </div>
+        <div id="selectedTripSummary" class="list-line muted">Select a trip to start planning.</div>
+        <div class="section-header" style="margin-top:12px;"><h2 style="font-size:17px; margin:0;">Your Trip at a Glance</h2></div>
+        <div id="tripAtGlance" class="list-line muted" style="margin-top:8px;">Pick a trip to see selected destinations and activity-poll status.</div>
+
+        <div class="section-header" style="margin-top:12px;"><h2 style="font-size:17px; margin:0;">Group Profiles & Activity Vibes</h2></div>
+        <div class="agreement-grid" style="margin-top:8px;">
+          <article class="list-line">
+            <strong>Who is in this trip</strong>
+            <div id="groupProfileCards" class="profiles-grid" style="margin-top:8px;"></div>
+          </article>
+          <article class="list-line">
+            <strong>What should this day feel like?</strong>
+            <div id="activityQuickOptions" class="activity-chip-wrap" style="margin-top:8px;"></div>
+            <div class="row" style="margin-top:10px;">
+              <button type="button" id="createActivityPollBtn" class="btn btn-secondary">Create Activity Poll from Selection</button>
+            </div>
+            <div id="activityPollStatus" class="small muted" style="margin-top:8px;">Pick activities, then generate a quick poll.</div>
+          </article>
+        </div>
+
+        <div class="section-header" style="margin-top:14px;"><h2 style="font-size:17px; margin:0;">Plan for the Day</h2></div>
+        <div class="agreement-grid" style="margin-top:8px;">
+          <article class="list-line">
+            <strong>Suggestion Pool</strong>
+            <details class="builder-card compact-details" style="margin-top:8px;">
+              <summary>Add / edit suggestion</summary>
+              <div class="row" style="margin-top:10px;">
+                <input id="suggestionTitleInput" type="text" placeholder="Suggestion title">
+                <select id="suggestionCategorySelect">
+                  <option value="Sight">Sight</option>
+                  <option value="Food">Food</option>
+                  <option value="Activity">Activity</option>
+                  <option value="Travel">Travel</option>
+                </select>
+                <input id="suggestionByInput" type="text" placeholder="Suggested by">
+              </div>
+              <div class="row" style="margin-top:8px;">
+                <input id="suggestionStartInput" type="time" placeholder="Start">
+                <input id="suggestionEndInput" type="time" placeholder="End">
+                <input id="suggestionOpenFromInput" type="time" placeholder="Open from">
+                <input id="suggestionOpenToInput" type="time" placeholder="Open to">
+                <input id="suggestionTravelInput" type="number" min="0" step="5" placeholder="Travel mins">
+                <label class="pref-pill"><input id="suggestionMustSeeInput" type="checkbox"> Must-see</label>
+                <button class="btn btn-secondary" id="addSuggestionBtn" type="button">Add Suggestion</button>
+              </div>
+            </details>
+            <div id="suggestionPoolList" style="margin-top:8px;"></div>
+          </article>
+
+          <article class="list-line">
+            <strong>Current Accepted Plan</strong>
+            <div class="small muted" id="acceptedPlanMeta" style="margin-top:4px;">No accepted items yet.</div>
+            <div id="acceptedPlanList" style="margin-top:8px;"></div>
+          </article>
+        </div>
+
+        <div class="agreement-grid" style="margin-top:10px;">
+          <article class="list-line">
+            <strong>Feasibility Check</strong>
+            <div id="feasibilitySummary" style="margin-top:8px;"></div>
+          </article>
+          <article class="list-line">
+            <strong>Trade-offs and Participation</strong>
+            <div id="tradeoffList" style="margin-top:8px;"></div>
+            <div id="workloadSummary" style="margin-top:8px;"></div>
+          </article>
+        </div>
+
+        <details class="builder-card compact-details" style="margin-top:14px;">
+          <summary>Assistant and extra planning tools (optional)</summary>
+          <div class="row" style="margin-top:10px;">
+            <label class="small muted" for="planningFocusSelect">Focus:</label>
+            <select id="planningFocusSelect">
+              <option value="balanced">Balanced</option>
+              <option value="budget">Budget-first</option>
+              <option value="experience">Experience-first</option>
+              <option value="time">Time-efficient</option>
+            </select>
+          </div>
+          <div class="prefs-grid" style="margin-top:8px;" id="planningOptions">
+            <label class="pref-pill"><input type="checkbox" id="optAvailability" checked> Match group availability</label>
+            <label class="pref-pill"><input type="checkbox" id="optBudget" checked> Keep within budget preference</label>
+            <label class="pref-pill"><input type="checkbox" id="optExperience" checked> Match experience preferences</label>
+            <label class="pref-pill"><input type="checkbox" id="optPace" checked> Respect trip pace preference</label>
+          </div>
+          <div class="row" style="margin-top:10px;">
+            <button class="btn" id="generatePlanBtn">✨ Generate AI Plan</button>
+          </div>
+          <div class="section-header" style="margin-top:14px;"><h2 style="font-size:17px; margin:0;">AI plan output</h2></div>
+          <div id="aiPlanOutput" class="list-line muted">Select a trip and generate a plan.</div>
+
+          <div id="tripProjectPanel" class="project-grid" style="margin-top:14px;">
+          <article class="list-line">
+            <strong>Destinations</strong>
+            <div class="row" style="margin-top:8px;">
+              <input id="destinationInput" type="text" placeholder="Add destination stop">
+              <button class="btn btn-secondary" id="addDestinationBtn" type="button">Add</button>
+            </div>
+            <div id="destinationList" style="margin-top:8px;"></div>
+          </article>
+
+          <article class="list-line">
+            <strong>Hotels</strong>
+            <div class="row" style="margin-top:8px;">
+              <input id="hotelNameInput" type="text" placeholder="Hotel name">
+              <input id="hotelAreaInput" type="text" placeholder="Area">
+              <select id="hotelBudgetInput">
+                <option value="Budget">Budget</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Premium">Premium</option>
+              </select>
+              <button class="btn btn-secondary" id="addHotelBtn" type="button">Add</button>
+            </div>
+            <div id="hotelList" style="margin-top:8px;"></div>
+          </article>
+
+          <article class="list-line">
+            <strong>Activity Polls</strong>
+            <div class="row" style="margin-top:8px;">
+              <input id="pollQuestionInput" type="text" placeholder="Poll question">
+              <input id="pollOptionsInput" type="text" placeholder="Options (comma separated)">
+              <button class="btn btn-secondary" id="addPollBtn" type="button">Add</button>
+            </div>
+            <div id="pollList" style="margin-top:8px;"></div>
+          </article>
+
+          <article class="list-line">
+            <strong>Inspiration Board (Reference Links)</strong>
+            <div class="row" style="margin-top:8px;">
+              <input id="inspirationUrlInput" type="text" placeholder="https://reference-link">
+              <input id="inspirationNoteInput" type="text" placeholder="Short note">
+              <button class="btn btn-secondary" id="addInspirationBtn" type="button">Add</button>
+            </div>
+            <div id="inspirationList" style="margin-top:8px;"></div>
+          </article>
+          </div>
+        </details>
+      </article>
+
+      <details class="section compact-details">
+        <summary>Trip Tracker</summary>
+        <div class="tracker-stats">
+          <div class="tracker-stat"><div class="tracker-label">Groups</div><div class="tracker-value" id="communityCount">0</div></div>
+          <div class="tracker-stat"><div class="tracker-label">Trips</div><div class="tracker-value" id="tripCount">0</div></div>
+          <div class="tracker-stat"><div class="tracker-label">Idea + Planning</div><div class="tracker-value" id="planningCount">0</div></div>
+          <div class="tracker-stat"><div class="tracker-label">Committed</div><div class="tracker-value" id="committedCount">0</div></div>
+          <div class="tracker-stat"><div class="tracker-label">Upcoming (60d)</div><div class="tracker-value" id="upcomingCount">0</div></div>
+        </div>
+        <div class="section-header" style="margin-top:14px;"><h2 style="font-size:17px; margin:0;">📊 Stage Distribution</h2></div>
+        <div id="tripStageChart" class="tracker-chart"></div>
+        <div class="section-header" style="margin-top:14px;"><h2 style="font-size:17px; margin:0;">📍 Stage by Trip</h2></div>
+        <div id="tripProgressList" class="tracker-list" style="margin-top:8px;"></div>
+      </details>
+    </main>
+  </div>
+  <script src="mtg-app.js"></script>
+</body>
+</html>

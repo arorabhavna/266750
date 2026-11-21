@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind The Gulf - Welcome</title>
+  <link rel="stylesheet" href="mtg-style.css">
+</head>
+<body>
+  <main class="landing-shell landing-wallpaper">
+    <section class="landing-hero">
+      <div class="landing-float-icons" aria-hidden="true">
+        <div class="vline v1"><span class="fi">✈️</span><span class="fi">🗺️</span><span class="fi">🎒</span><span class="fi">☕</span><span class="fi">🏔️</span></div>
+        <div class="vline v2"><span class="fi">🧳</span><span class="fi">🏕️</span><span class="fi">🧭</span><span class="fi">🚆</span><span class="fi">🛶</span></div>
+        <div class="vline v3"><span class="fi">📸</span><span class="fi">🎟️</span><span class="fi">📍</span><span class="fi">🧺</span><span class="fi">🎵</span></div>
+        <div class="vline v4"><span class="fi">🏙️</span><span class="fi">🚴</span><span class="fi">⛵</span><span class="fi">🍽️</span><span class="fi">🚕</span></div>
+        <div class="vline v5"><span class="fi">📖</span><span class="fi">🏖️</span><span class="fi">🚌</span><span class="fi">🚢</span><span class="fi">✈️</span></div>
+        <div class="vline v6"><span class="fi">🗺️</span><span class="fi">🎒</span><span class="fi">☕</span><span class="fi">🏔️</span><span class="fi">🧭</span></div>
+        <div class="vline v7"><span class="fi">🧳</span><span class="fi">🚆</span><span class="fi">📸</span><span class="fi">🎟️</span><span class="fi">📍</span></div>
+        <div class="vline v8"><span class="fi">🧺</span><span class="fi">🎵</span><span class="fi">🚕</span><span class="fi">📖</span><span class="fi">🏕️</span></div>
+      </div>
+      <div class="landing-center-card">
+        <div class="landing-logo-wrap">
+          <img src="mtg-logo.png" alt="Mind The Gulf logo">
+        </div>
+        <button id="letsGoBtn" class="btn landing-go-btn" type="button">Lets Make That Getaway happen!</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const button = document.getElementById("letsGoBtn");
+      button.addEventListener("click", function () {
+        localStorage.setItem("mtgSignedIn", "1");
+        const params = new URLSearchParams(window.location.search);
+        const next = params.get("next") || "mtg-profile.html";
+        window.location.href = next;
+      });
+    })();
+  </script>
+</body>
+</html>
